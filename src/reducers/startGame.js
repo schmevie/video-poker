@@ -1,6 +1,7 @@
 import { shuffleDeck } from '../utils/formulas';
 
 export default (state, initialGameState) => {
+
 	//Shuffle the deck of cards from the current game state
 	const shuffledDeck = shuffleDeck(state.gameState.deckOfCards);
 
@@ -17,7 +18,8 @@ export default (state, initialGameState) => {
 	    started: true,
 	    currentHand: shuffledHand,
 	    deckOfCards: shuffledDeck,
-	    score: state.gameState.score,
+	    totalScore: state.gameState.totalScore,
+	    handScore: 0,
 	    handTitle: '',
 	    gameOver: false,
 	  }

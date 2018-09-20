@@ -1,13 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { yOffset } from '../utils/constants';
 
 const HandTitle = (props) => {
+
+  const yValue = -600 + yOffset;
+
   const textStyle = {
     fontFamily: '"Bowlby One SC", cursive',
     fontSize: 60,
     fill: '#cbca62',
     x: -170,
-    y: -600,
+    y: yValue,
   };
 
 

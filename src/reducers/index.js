@@ -6,10 +6,11 @@ import startGame from './startGame';
 import toggleCardButtonState from './toggleCardButtonState';
 import goCalculate from './goCalculate';
 
-import { initializeDeck } from '../utils/formulas';
+//import { initializeDeck } from '../utils/formulas';
 
 const initialGameState = {
-	score: 0,
+	totalScore: 0,
+	handScore: 0,
 	started: false,
 	deckOfCards: initialDeck,
 	currentHand: [],

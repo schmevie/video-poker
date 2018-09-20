@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const KeepButton = (props) => {
 
-  const fillColor = props.buttonState == 'KEEP' ? '#218c74' : '#000000';
+  const fillColor = props.buttonState === 'KEEP' ? '#218c74' : '#000000';
 
   const button = {
     x: 36, // half width

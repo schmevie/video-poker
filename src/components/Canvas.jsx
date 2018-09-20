@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { convertCardSuitToString, convertCardRankToString } from '../utils/formulas'
+import { yOffset } from '../utils/constants';
 
 import Title from './Title'
 import Background from './Background';
@@ -10,9 +11,12 @@ import CurrentScore from './CurrentScore';
 import Card from './Card';
 import GoButton from './GoButton';
 import HandTitle from './HandTitle';
+import HandScore from './HandScore';
 
 const Canvas = (props) => {
-  const viewBox = [window.innerWidth / -2, 100 - window.innerHeight, window.innerWidth, window.innerHeight];
+const gameHeight = 1200;
+const viewBox = [window.innerWidth / -2, 100 - gameHeight, window.innerWidth, gameHeight];  
+  //const viewBox = [window.innerWidth / -2, 100 - window.innerHeight, window.innerWidth, window.innerHeight];
   
   //Getting and displaying the current hand that was dealt to you.
   const displayHand = [];
@@ -23,7 +27,7 @@ const Canvas = (props) => {
     const cardPath = '/img/' + convertedCardString + '.png';
     const cardPosition = {
       x: -400 + (i * 150), 
-      y: -550
+      y: -550 + yOffset
     };
     displayHand.push(<Card toggleCardButtonState={props.toggleCardButtonState} key={i} position={cardPosition} path={cardPath} dataKey={i} buttonState={currentCard.buttonState} gameOver={props.gameState.gameOver} />);
   }
@@ -36,7 +40,9 @@ const Canvas = (props) => {
     >
       <Background />
       
-      <CurrentScore score={props.gameState.score}/>
+      <HandScore handScore={props.gameState.handScore} />
+      <CurrentScore totalScore={props.gameState.totalScore}/>
+
       <HandTitle handTitle={props.gameState.handTitle} />
 
       {! props.gameState.started && props.gameState.gameOver ||
@@ -64,7 +70,7 @@ Canvas.propTypes = {
     started: PropTypes.bool.isRequired,
     score: PropTypes.number.isRequired,
     deckOfCards: PropTypes.array.isRequired,
-    currentHand: PropTypes.array.isRequired,
+    //currentHand: PropTypes.array.isRequired,
     handTitle: PropTypes.string.isRequired,
     gameOver: PropTypes.bool.isRequired,
   }).isRequired,   

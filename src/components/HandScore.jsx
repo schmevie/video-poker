@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 import { yOffset } from '../utils/constants';
 
-const CurrentScore = (props) => {
-  const yValue = 10 + yOffset + 150;
+const HandScore = (props) => {
+  const yValue = 10 + yOffset + 100;
   const scoreStyle = {
     fontFamily: '"Bowlby One SC", cursive',
     fontSize: 40,
@@ -14,14 +14,14 @@ const CurrentScore = (props) => {
   return (
     <g >
       <text style={scoreStyle} x="-130" y={ yValue }>
-         Total Score: {props.totalScore}
+         Hand Score: {props.handScore}
       </text>
     </g>
   );
 };
 
-CurrentScore.propTypes = {
+HandScore.propTypes = {
   score: PropTypes.number.isRequired,
 };
 
-export default CurrentScore;
+export default HandScore;

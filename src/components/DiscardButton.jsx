@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const DiscardButton = (props) => {
 
-  const fillColor = props.buttonState == 'DISCARD' ? '#218c74' : '#000000';
+  const fillColor = props.buttonState === 'DISCARD' ? '#218c74' : '#000000';
 
   const button = {
     x: 105, // half width

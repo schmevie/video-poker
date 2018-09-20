@@ -5,7 +5,6 @@ import Canvas from './components/Canvas.jsx';
 
 class App extends Component {
   componentDidMount() {
-    const self = this;
 
     window.onresize = () => {
       const cnv = document.getElementById('video-poker-canvas');
@@ -31,7 +30,8 @@ class App extends Component {
 App.propTypes = {
   gameState: PropTypes.shape({
     started: PropTypes.bool.isRequired,
-    score: PropTypes.number.isRequired,
+    totalScore: PropTypes.number.isRequired,
+    handScore: PropTypes.number.isRequired,
     deckOfCards: PropTypes.array.isRequired,
     currentHand: PropTypes.array.isRequired,
     handTitle: PropTypes.string.isRequired,

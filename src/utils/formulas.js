@@ -73,7 +73,7 @@ export const convertCardRankToString = (cardRank) => {
 //Update the hand with a new card only if in the 'discard' state
 export const updateHandFromDeck = (currentHand, deckOfCards) => {
 	for (let i=0; i < currentHand.length; i++) {
-		if (currentHand[i].buttonState == 'DISCARD') {
+		if (currentHand[i].buttonState === 'DISCARD') {
 			currentHand[i] = deckOfCards.pop();
 		}
 	}
@@ -113,4 +113,13 @@ export const getHandTitle = (pairScore, straightScore) => {
 		updatedHandTitle = 'Pair';
 	}
 	return updatedHandTitle;
+}
+
+export const replaceAceHigh = (currentRanksArr) => {
+	for (let i=0; i < currentRanksArr.length; i++) {
+		if (currentRanksArr[i] === 1) {
+			currentRanksArr[i] = 14;
+		}
+	}
+	return currentRanksArr;
 }

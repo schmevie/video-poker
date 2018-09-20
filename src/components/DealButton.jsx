@@ -1,10 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { yOffset } from '../utils/constants';
+
 const DealButton = (props) => {
+
+  const yValueButton = -220 + yOffset;
   const button = {
     x: -150, // half width
-    y: -220, // minus means up (above 0)
+    y: yValueButton, // minus means up (above 0)
     width: 300,
     height: 100,
     rx: 10, // border radius
@@ -16,10 +20,11 @@ const DealButton = (props) => {
     onClick: props.onClick,
   };
 
+  const yTextValue = -150 + yOffset;
   const text = {
     textAnchor: 'middle', // center
     x: 0, // center relative to X axis
-    y: -150, // 150 up
+    y: yTextValue, // 150 up
     style: {
       fontFamily: '"Bowlby One SC", cursive',
       fontSize: 60,
