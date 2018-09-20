@@ -104,9 +104,9 @@ export const calculatePair = (ranksArr) => {
 }
 
 //Get what kind of hand you scored
-export const getHandTitle = (pairScore, straightScore) => {
+export const getHandTitle = (pairScore, straightScore, aceHighStraightScore) => {
 	let updatedHandTitle = 'No Value';
-	if (straightScore > 0) {
+	if ((straightScore || aceHighStraightScore) > 0) {
 		updatedHandTitle = 'Straight';
 	}
 	if (pairScore > 0) {
@@ -115,6 +115,7 @@ export const getHandTitle = (pairScore, straightScore) => {
 	return updatedHandTitle;
 }
 
+//Replace the ace of rank 1 with rank 14 to get an ace high straight.
 export const replaceAceHigh = (currentRanksArr) => {
 	for (let i=0; i < currentRanksArr.length; i++) {
 		if (currentRanksArr[i] === 1) {
@@ -122,4 +123,9 @@ export const replaceAceHigh = (currentRanksArr) => {
 		}
 	}
 	return currentRanksArr;
+}
+
+//Sorting with numbers
+export const sortNumbers = (arr) => {
+	return arr.sort(function(a, b){return a - b});	
 }

@@ -1,4 +1,4 @@
-import { updateHandFromDeck, initializeDeck, calculateStraight, calculatePair, getHandTitle, replaceAceHigh } from '../utils/formulas';
+import { updateHandFromDeck, initializeDeck, calculateStraight, calculatePair, getHandTitle, replaceAceHigh, sortNumbers } from '../utils/formulas';
 import { Suits, Ranks } from '../utils/constants';
 
 export default (state, initialGameState) => {
@@ -13,14 +13,14 @@ export default (state, initialGameState) => {
 	const ranks = updatedHand.map(a =>a.rank);
 	const aceHighRanks = replaceAceHigh(ranks);
 
-	const straightScore = calculateStraight(ranks.sort());
-	const aceHighStraightScore = calculateStraight(aceHighRanks.sort());
+	const straightScore = calculateStraight(sortNumbers(ranks));
+	const aceHighStraightScore = calculateStraight(sortNumbers(aceHighRanks));
 	const pairScore = calculatePair(ranks);
 	const updateHandScore = pairScore + straightScore + aceHighStraightScore;
 	const updatedScore = state.gameState.totalScore + updateHandScore;
 
 	//Once we have calculated what kind of hand we have based on the score we give it a title.
-	const updatedHandTitle = getHandTitle(pairScore, straightScore);
+	const updatedHandTitle = getHandTitle(pairScore, straightScore, aceHighStraightScore);
 
 	return {
 	  ...state,
