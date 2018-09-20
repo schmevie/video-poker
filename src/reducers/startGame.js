@@ -2,7 +2,7 @@ import { shuffleDeck } from '../utils/formulas';
 
 export default (state, initialGameState) => {
 	//Shuffle the deck of cards from the current game state
-	const shuffledDeck = shuffleDeck(initialGameState.deckOfCards);
+	const shuffledDeck = shuffleDeck(state.gameState.deckOfCards);
 
 	//Grab the top 5 cards from the deck, put them in my hand and then remove them from the deck of cards. 
 	const shuffledHand  = [];
@@ -13,11 +13,13 @@ export default (state, initialGameState) => {
 	return {
 	  ...state,
 	  gameState: {
-	    ...initialGameState,
+	    //...initialGameState,
 	    started: true,
 	    currentHand: shuffledHand,
 	    deckOfCards: shuffledDeck,
 	    score: state.gameState.score,
+	    handTitle: '',
+	    gameOver: false,
 	  }
 	}
 };
