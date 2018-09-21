@@ -16,8 +16,15 @@ export default (state, initialGameState) => {
 	const straightScore = calculateStraight(sortNumbers(ranks));
 	const aceHighStraightScore = calculateStraight(sortNumbers(aceHighRanks));
 	const pairScore = calculatePair(ranks);
-	const updateHandScore = pairScore + straightScore + aceHighStraightScore;
+
+	let updatedStraightScore = 0;
+	if (straightScore > 0 || aceHighStraightScore > 0)
+	{
+		updatedStraightScore = 500;
+	}
+	const updateHandScore = pairScore + updatedStraightScore;
 	const updatedScore = state.gameState.totalScore + updateHandScore;
+	console.log(updateHandScore);
 
 	//Once we have calculated what kind of hand we have based on the score we give it a title.
 	const updatedHandTitle = getHandTitle(pairScore, straightScore, aceHighStraightScore);

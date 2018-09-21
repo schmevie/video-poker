@@ -94,7 +94,7 @@ export const calculateStraight = (ranksArrSorted) => {
 	return score;
 }
 
-//Calculate whether a pair exists. Array should come sorted.
+//Calculate whether a pair exists. * Array should come sorted. *
 export const calculatePair = (ranksArr) => {
 	let score = 0;
 	if (new Set(ranksArr).size !== ranksArr.length) {
@@ -103,7 +103,6 @@ export const calculatePair = (ranksArr) => {
 	return score;
 }
 
-//Get what kind of hand you scored
 export const getHandTitle = (pairScore, straightScore, aceHighStraightScore) => {
 	let updatedHandTitle = 'No Value';
 	if ((straightScore || aceHighStraightScore) > 0) {
@@ -115,17 +114,20 @@ export const getHandTitle = (pairScore, straightScore, aceHighStraightScore) => 
 	return updatedHandTitle;
 }
 
-//Replace the ace of rank 1 with rank 14 to get an ace high straight.
+//Replace the ace which normally has rank 1 with rank 14 to calculate whether you have an ace high straight.
 export const replaceAceHigh = (currentRanksArr) => {
+	let aceHighArr = [];
 	for (let i=0; i < currentRanksArr.length; i++) {
-		if (currentRanksArr[i] === 1) {
-			currentRanksArr[i] = 14;
+		let currentRank = currentRanksArr[i];
+		if (currentRank === 1) {
+			currentRank = 14;
 		}
+		aceHighArr.push(currentRank);
 	}
-	return currentRanksArr;
+	return aceHighArr;
 }
 
-//Sorting with numbers
+//Sorting with numbers rather than string, I believe JS sort function deals with strings.
 export const sortNumbers = (arr) => {
 	return arr.sort(function(a, b){return a - b});	
 }

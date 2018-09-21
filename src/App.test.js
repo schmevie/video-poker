@@ -107,7 +107,7 @@ describe('Formulas/Functions', () => {
   it('should calculate a straight hand sorted', () => {
     expect(formulas.calculateStraight(formulas.sortNumbers([12, 8, 9, 10, 11]))).toBe(500);
   });
-  it('should calculate a straight hand sorted - 2', () => {
+  it('should calculate a straight hand sorted - out of sorts', () => {
     expect(formulas.calculateStraight(formulas.sortNumbers([2, 5, 4, 3, 6]))).toBe(500);
   });    
   it('should calculate a non straight hand', () => {
